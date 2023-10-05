@@ -1,11 +1,13 @@
 import { useState } from "react"
 import Image from "next/image"
 import favicon from "../../public/favicon.ico"
+import styles from './index.module.css'
 
 export default function Home() {
 
   const [count, setCount] = useState(0)
   const [animalInput, setAnimalInput] = useState("")
+  const [result, setresult] = useState()
 
  async function onSubmit(e) {
       e.preventDefault()
@@ -31,13 +33,11 @@ export default function Home() {
   }
 
   return (
-    <div>
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24`}
+    <div className={styles.body}>
+    <main className={styles.main}
     >
-     <Image className="w-30 h-30" src={favicon}/>
+     <Image className={styles.icon} src={favicon}/>
      <h3 className="text-[green]">Name My Pet</h3>
-     <p>Yoo've used this app {count} times</p>
      <form onSubmit={onSubmit}>
       <input 
       type='text'
@@ -51,8 +51,8 @@ export default function Home() {
       <input 
       type="submit" 
       value="Generate names" />
-
      </form>
+     <div className={styles.result}>{result}</div>
       
     </main>
     </div>
